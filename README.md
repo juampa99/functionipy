@@ -8,10 +8,10 @@ Try simulates a try-except block, but instead of raising the exception, it retur
 
 Example failure:
 ```python
-def raises_exception():
-    raise RuntimeException("Example exception")
+def raises_exception(exc_message):
+    raise RuntimeException(exc_message)
 
-result = Try(lambda: raises_exception())
+result = Try(lambda: raises_exception("Example exception"))
 
 print(result.error)
 ```
@@ -24,10 +24,10 @@ print(result.error)
 
 Example Failure:
 ```python
-def doesnt_raise_exception():
-    return "Hello World"
+def doesnt_raise_exception(my_arg):
+    return f"{my_arg} World"
 
-result = Try(lambda: doesnt_raise_exception())
+result = Try(lambda: doesnt_raise_exception("Hello"))
 
 print(result.val)
 ```
@@ -46,6 +46,16 @@ elif isinstance(result, Failure):
 ```
 
 On python 3.10+ you can use the new match/case keywords.
+
+You can also use partial evaluation from the functools module instead of the less elegant lambdas:
+```python
+import functools
+
+p_do_something = functools.partial(do_something, "Hello World")
+
+res = Try(p_do_something)
+...
+```
 
 ## Extra functionality
 
