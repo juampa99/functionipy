@@ -4,7 +4,7 @@ FunctioniPy implements functional error handling as [seen](https://docs.scala-la
 ## How to use
 The package provides three main structures: Try (function), Success (object) and Failure (object).
 
-Try simulates a try-except block, but instead of raising the exception, it returns a Failure object that contains the exception. In case the passed function doesn't raises an exception, Try retuns a Success object containing the return value of the function.
+Try simulates a try-except block, but instead of raising the exception, it returns a Failure object that contains the exception. In case the passed function doesn't raise an exception, Try retuns a Success object containing the return value of the function.
 
 Example failure:
 ```python
